@@ -39,3 +39,9 @@ sudo apt install python3-pip
 pip3 --version
 pip3 show package_name
 pip3 uninstall package_name
+
+
+
+setxkbmap -option
+setxkbmap -option caps:swapescape
+https://unix.stackexchange.com/questions/165477/how-to-use-capslock-instead-of-escape-in-vim
