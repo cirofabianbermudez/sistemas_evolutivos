@@ -1,0 +1,106 @@
+-- VIM MANUAL --
+
+Insert mode		
+			i		insertar	izquierda
+			a		append 	derecha
+			A		append 	fin del renglon
+			o		nuevo renglon	abajo
+			O		nuevo renglon	arriba
+			
+Movement		
+			j		abajo
+			k		arriba
+			h		izquierda
+			l		derecha
+			w		word		se mueve una palabra adelante
+			b		back		se mueve una palabra atras
+			$		end of line
+			0		beginning of line
+			
+
+Exit
+
+			:q		salir
+			:q!		forzar salir
+			:w		forzar salir
+			:wq		salir y guardar
+			:x		salir y guardar
+
+			
+
+replace mode		r
+
+selection mode
+	visual		v	
+	visual line	s-v
+	visual block	c-v
+
+command line		:
+
+
+
+save write		:w 
+exit			:q	:q!
+			:qa
+
+save and exit		:x
+
+help			:help :help w
+
+split			:sp
+newtab			:tabnew
+change tab		gt
+
+
+movement 		
+			w
+			d
+			b
+			0
+			$
+			^
+			gg
+			G
+			c-u
+			c-d
+			L
+			M
+			H
+			fo
+			Fo
+			to
+			To
+
+editing commands
+			o
+			O
+			a
+			A
+			d and a movement command
+			dw 
+			de 
+			db
+			c and a movement command
+			cw
+			ce
+			cb
+			dd
+			cc
+			x
+			r replace character
+
+			u 
+			c-r
+			y and a movement command
+			p
+
+
+visual mode		v
+			V 	line
+			C-v	block
+			
+			veee~	change mayu
+			c2w
+			ci[
+			% move between paretesis
+			da(

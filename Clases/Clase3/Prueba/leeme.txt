@@ -1,0 +1,20 @@
+27.01.2021
+
+algoritmo.py 
+
+es el código de un algoritmo. No se debe de modificar.
+Está escrito en python, pero generalmente está en C.
+
+hace.sh
+
+es un script del shell para ejecutar 100 veces el
+algoritmo en algoritmo.py
+
+sale.txt
+
+el archivo de salida de las 100 ejecuciones del algoritmo.
+
+procesa.py
+
+es un programa en python para hace cálculos sobre los
+datos en el archivo "sale.txt" 

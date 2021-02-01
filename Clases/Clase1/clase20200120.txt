@@ -1,0 +1,138 @@
+20.01.2021
+
+Clases lunes y miércoles de 10:30 a 12:00 hrs
+
+Hasta la primera semana de marzo
+
+12 clases si terminamos el 4 de marzo
+
+Dr. Luis Gerardo de la Fraga
+Correo-e: fraga@cs.cinvestav.mx
+Página web: https://delta.cs.cinvestav.mx/~fraga/Cursos/Optimizacion/2021/
+
+Forma de calificar (mi parte del curso):
+  1 examen
+  5 tareas
+
+Trabajaremos en GNU/Linux
+ * Ubuntu es muy fácil de instalar
+
+Gnuplot
+Python
+C o C++
+
+Metas del curso:
+
+1. Optimizar un circuito con un algoritmo multiobjetivo.
+2. Entender qué es un problema de optimización.
+3. Conocer las vicisitudes de usar heurísticas para
+   resolver un problema de optmización.
+
+La idea de UNIX es usar todas las herramientas disponibles
+para resolver problemas
+
+El software maximiza o minimiza:
+
+si tienen una problema de minimizar f(x) y el software es para maximizar,
+   maximizan -f(x)
+
+si tienen una problema de maximizar f(x) y el software es para minimizar,
+   minimizan -f(x)
+
+Un problema líneal ajustar una línea a una serie
+de observaciones
+ f(x)
+  ^
+  |            *
+  |  *  -*------------ 
+  | ----    *
+  |-*  *         *
+  |
+  -------------------> x  
+
+  Modelo: f(x) = a1 x + a0
+  Tenemos un conjuntos de datos { (xi, yi) }, para i = 1, 2, ..., n
+
+  Problema:
+     Ajustar la mejor línea al conjunto de puntos
+
+   Existen errores del modelo con los datos:
+
+       ri = yi - f(x)
+
+    La primera aproximación para resolver el problema es
+  minimizar la suma de los residuos
+
+     minimizar: s = suma ri
+
+     Los errores se calculan de esta forma y no sirve.
+
+   Otra aproximación sería:
+     minimizar: s = suma |ri|
+
+   \         / |x|
+    \       /
+     \     /
+      \   /
+       \ /
+---------------
+       No se puede resolver porque la función valor absoluto es
+    discontínua en su mínimo
+
+   
+   Otra aproximación sería:
+     minimizar: s = suma ri^2
+
+  ¡Y este problema se puede analíticamente!
+
+  \par s    \par s
+  ------- , -------
+  \par a0   \par a1
+
+
+   s = sum ri^2
+     = sum [ yi - f(x) ]^2 
+     = sum [ yi - (a1 xi + a0) ]^2 
+   s = sum ( yi - a1 xi - a0 )^2 
+
+   \par s
+  ------- = sum 2(yi - a1 xi - a0)(-1)
+  \par a0 
+
+    Igualando a cero :
+
+   sum 2(yi - a1 xi - a0)(-1) = 0
+  -sum yi + sum a1 xi + sum a0 = 0
+  sum a1 xi + sum a0 = sum yi
+  a1 sum xi + a0 sum 1  = sum yi
+  a1 sum xi + a0 n  = sum yi       (1)
+
+Ahora calculamos la otra derivada parcial:
+   \par s
+  -------- = suma 2(yi - a1 xi - a0)(-xi)
+  \par a1
+
+   Igualando a cero:
+
+   suma 2(yi - a1 xi - a0)(-xi) = 0
+   suma (yi - a1 xi - a0)(-xi) = 0
+   suma -xi yi + a1 xi^2 + a0 xi = 0
+   a1 sum xi^2 + a0 sum xi = suma xi yi  (2)
+
+   Escribiendo en forma matricial (2) y (1):
+
+   [ sum xi^2    sum x1 ] [ a1 ] = [ suma xi yi ]
+   [  sum xi       n    ] [ a0 ] = [  suma yi   ]
+
+    X a = v
+
+    X^{-1} X a =  X^{-1} v
+
+    a = X^{-1} v
+
+  Ajustar los coeficiente de cualquier polinimo
+ es también un problema lineal
+
+   f(x) = a3 x^3 + a2 x^2 + a1 x + a0
+
+

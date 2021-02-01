@@ -1,0 +1,78 @@
+27.01.2021
+
+El método de Newton en más dimensiones
+
+La función de Rosenbrock
+
+f(x, y) = (a − x)^2 + b(y − ax^2)^2
+
+Cada paso del método de Newton
+
+  Da = -f'/f''
+
+     = -H^{-1}    J 
+        2 x 2   2 x 1    
+           2 x 1
+
+    [ \par f ]
+    [ ------ ]
+    [ \par x ]
+J = [        ]
+    [ \par f ]
+    [ ------ ]
+    [ \par y ]
+
+La matriz J se el conoce como la jacobiana
+
+H, la matriz de la segunda derivada se le conoce como
+la Hesiana
+
+         [ \par^2 f/(\par x \par x)   \par^2 f/(\par x \par y) ]
+H = J' = [                                                     ]
+         [ \par^2 f/(\par y \par x)   \par^2 f/(\par y \par y) ]
+
+Para un problema de n dimensiones, la jacobiana
+es un vecto de tamaño n x 1, y la hesiana es una matriz
+de tamaño n x n
+
+
+f(x, y) = (a − x)^2 + b(y − x^2)^2
+
+Calculamos la primera derivada:
+
+\par f/\par x = 2(a-x)(-1) + 2b(y − x^2)(-2x)
+              = 2(x-a) - 4bx(y − x^2)
+              = 2(x-a) - 4bxy + 4 b x^3
+
+\par f/\par y = 2b(y − x^2)(1)
+              = 2b(y − x^2) 
+              = 2by − 2bx^2 
+
+Calculamos la segunda derivada:
+
+\par^2 f/(\par x \par x) = 2 - 4by + 12 b x^2  
+\par^2 f/(\par x \par y) = -4bx
+
+\par^2 f/(\par y \par x) = -4bx
+\par^2 f/(\par y \par y) = 2b
+
+A = [a b]
+    [b c]
+
+Se puede invertir usando determinantes
+
+det(A) = ac - b^2
+
+           1   [c   -b]
+A^{-1} = ------[-b   a]
+         det(A) 
+
+De la presentacion "optimizacion.pdf":
+
+No se puede buscar exahustivamente en más de tres dimensiones
+Y tenemos que usar heurísticas para resolver aproximadamente 
+problemas.
+
+Una heurística es una búsqueda aleatoria dirigida (inteligente)
+
+

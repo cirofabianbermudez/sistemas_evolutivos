@@ -1,0 +1,41 @@
+sudo apt-get update
+sudo apt-get install gnuplot
+
+sudo apt-get install texlive-full
+sudo apt-get install texmaker
+
+Solve Ctrl + Shift + U
+This shortcut can be changed or disabled using the ibus-setup utility:
+
+    Run ibus-setup from the terminal (or open IBus Preferences).
+    Go to “Emoji”.
+    Next to “Unicode code point:”, click on the three dots (i.e. ...).
+    In the dialog, click “Delete”, then “OK”.
+    Close the IBus Preferences window.
+
+sudo apt-get install git-all
+
+# Instalar vim
+vi --version
+sudo apt remove --assume-yes vim-tiny
+sudo apt update
+sudo apt install --assume-yes vim
+vi --version
+
+agregar vimrc
+ls -a | grep .vim
+vim .vimrc
+
+
+Cambiar mayusc a esc
+sudo apt install gnome-tweaks
+gnome-tweaks
+Now go to “Keyboard & Mouse” tab, and click on “Additional Layout Options”
+Inside “Caps Lock Behavior” choose “Make Caps Lock an additional Esc”
+
+
+sudo apt update
+sudo apt install python3-pip
+pip3 --version
+pip3 show package_name
+pip3 uninstall package_name

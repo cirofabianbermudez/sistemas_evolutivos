@@ -1,0 +1,155 @@
+25.01.2021
+
+Si un problema es no lineal y multimodal entonces
+de justifica aplicar heurísticas para resolverlo.
+
+Un problema no lineal se resuelve linealizándolo
+usando las series de Taylor
+
+        sum (x-a)^i f^(i)(a)
+f(x) = ---------------------,   (1)
+               i!
+
+donde la sumatoria va desde i=0 hasta infinito,
+0! = 1,
+(a-x)^0 = 1,
+f^(i) es la derivada de (i)-ésimo orden de f.
+
+Vamos a hacer un ejemplo:
+
+f(x) = (x-1)(x-2)(x-4)
+
+Vamos a expandir esta función usando series de Taylor
+
+Usando dos términos de la serie de Taylor
+              (x-a)f'(a)
+f(x) = f(a) + ---------
+                  1!
+
+f(x) = f(a) + (x-a) f'(a)
+
+a=3
+
+  f(x) = f(3) + (x-3)f'(3)
+
+Calculo la primera derivada:
+ f(x) = (x-1)(x-2)(x-4)
+ f(x) = (x^2 - 3x + 2)(x-4)
+      = x^3 - 3x^2 + 2x - 4x^2 + 12x - 8
+      = x^3 - 7x^2 + 14x - 8
+
+  f'(x) = 3x^2 - 14x + 14
+
+  f'(3) = 3(3)^3 - 14(3) + 14
+        = 27 - 42 + 14 = 27 - 28 = -1
+
+  f(3) = (x-1)(x-2)(x-4)
+       = (3-1)(3-2)(3-4) = 2(1)(-1) = - 2 
+  f(x) en series de Taylor en el punto a=3 resulta en
+
+  f(x) = -2 + (x-3)(-1)
+       = -2 -x + 3 = -x + 1
+
+Ahora expando f(x) usando tres términos de la serie de Taylor
+
+              (x-a)f'(a)   (x-a)^2 f''(a)
+f(x) = f(a) + ---------- + --------------
+                  1!             2!
+
+     = f(a) + (x-a) f'(a) + (x-a)^2/2 f''(a)
+
+Necesito la segunda derivada de f(x):
+  f'(x) = 3x^2 - 14x + 14
+  f''(x) = 6x - 14
+
+  f''(3) = 6(3) - 14 = 18-14 = 4
+
+La expansión será:
+     = 1 - x + (x-3)^2/2 (4)
+     = 1 - x + (x-3)^2 (2)
+     = 1 - x + (x^2 -6x + 9) (2)
+     = 1 - x + 2x^2 -12x + 18
+     = 19 + 2x^2 -13x 
+     =  2x^2 - 13x + 19 
+
+Finalmente, hacemos la expansión de f(x) con cuatro términos de la serie
+de Taylor:
+              (x-a)f'(a)   (x-a)^2 f''(a)   (x-a)^3 f'''(a)
+f(x) = f(a) + ---------- + -------------- + ---------------
+                  1!             2!              3!
+
+     = f(a) + (x-a) f'(a) + (x-a)^2 f''(a)/2 + (x-a)^3 f'''(a)/6
+
+
+     = 2x^2 - 13x + 19 + (x-3)^3 (6/6)
+     = 2x^2 - 13x + 19 + (x^3 - 3x^2 (3) + 3(x)(9) - 27)
+     = 2x^2 - 13x + 19 + x^3 - 9x^2 + 27x - 27
+     = x^2 - 7x^2 + 14x - 8
+
+que es igual al polinomio inicial del problema
+
+El método Newton (versión 1)
+
+   La aproximaxión con dos términos de la seria de Taylor de f(x)
+
+   f(x) = f(a) + (x-a) f'(a)
+   f(x) = f(a) + (dx) f'(a)
+
+   Si encontramos la raíces de f(x), igualamos la expresión anterior
+  a cero
+
+  f(a) + (dx) f'(a) = 0
+  dx = -f(a)/f'(a)
+  
+El método Newton (versión 2), para encontrar el mínimo
+o máximo de una función
+
+   La aproximación con dos términos de la seria de Taylor de f(x)
+
+   f'(x) = f'(a) + (x-a) f''(a)
+   f'(x) = f'(a) + (dx) f''(a)
+
+   Si encontramos donde la derivada es igual a cero:
+
+  f'(a) + (dx) f''(a) = 0
+  dx = -f'(x)/f''(a)
+
+  Necesitamos un a0
+  Iterativamente hacemos:
+    a_{i+1} = a_i + dx
+
+  Es muy importante usar un número máximo de iteraciones
+  Necesitamos las expresiones para la primera y segunda derivada de f(x)
+  Paramos cuando haya convergencia:
+       |dx| < epsilon
+  
+
+  Podríamos usar otra formulación de convergencia cuando
+  | f_{i+1} - f_{i} | < epsilon, pero conlleva más cálculos
+
+
+Un ejemplo:
+  Encontrar x para x^3 = cos(x) usando el método de Newton 
+
+  f(x) = x^3 - cos(x)
+  f'(x) = 3x^2 + sen(x)
+
+Tarea 1: (Fecha de entrega 3 de febrero 2021)
+  Encontrar los 3 maximos locales y 3 mínimos locales
+de la función f(x) = (x - 2)(x - 5) + sin(1.5 pi x)
+
+ Y hacen una heurística:
+
+Repiten 100 veces
+
+Generar una solución aleatoria en [0,7]
+y la usan como el valor inicial para el método de Newton.
+De las 100 pruebas, verifican cuáles fueron el mínimo global
+
+|x - minimo_global| < 1e-4 es una solución
+
+
+Para buscar e instalar un paquete en Ubuntu:
+
+apt-cache search paquete 
+sudo apt-get install paquete
