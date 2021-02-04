@@ -45,3 +45,12 @@ pip3 uninstall package_name
 setxkbmap -option
 setxkbmap -option caps:swapescape
 https://unix.stackexchange.com/questions/165477/how-to-use-capslock-instead-of-escape-in-vim
+
+ udo apt-get install vim-gtk 			copiar texto fuera de vim
+sudo apt-get update
+sudo apt-get install hunspell-es		texmaker diccionario español
+/usr/share/hunspell/
+
+
+
+

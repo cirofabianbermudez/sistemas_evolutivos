@@ -1,0 +1,111 @@
+Ctrl + Alt + T		open the terminal
+
+cat /etc/shells 
+vamos a ocupar bash
+
+which bash
+
+clear
+/usr/bin/bash
+
+cd			change directory
+ls			list directories
+touch			crea un archivo vacio
+
+ls -al			more detail list
+
+chmod +x filename.sh	change persimion to execute
+./filename.sh		run script
+
+echo "This is a random text"	this is how we display text
+
+si queremos guardar el texto en un archivo se hace asi
+
+echo "text" > file.txt
+
+con el simbolo de mayorque mandamos lo de la izquierda a la derecha
+
+cat > file2.txt 	te permite escribir y remplazar
+
+si quieres solo ponerlo hasta el final o append 
+
+ponemos dos veces el mayorque
+
+cat >> file2.txt 	
+
+es necesario presionar Ctrl + D para salir del modo de escritura 
+
+para poner comentarios lo hacemos el signo de gato #
+
+# esto es un comentao
+
+Para poner comentario largos lo que hacemos de multiples lineas utilazamos
+
+: ' 
+linea
+linea 
+linea'
+
+nota: es necesario poner el espacio despues de los 2 puntos, no hay que olvidarlo
+
+hereDOCdelimiter 	es un nombre para delimitar un texto con cat
+
+cat << delimiter
+texto
+texto
+delimiter
+
+Conditional statements
+
+cuando se declaren las variables es importante no dejar espacios entre el
+signo igual y el valor
+
+if [ condition ]
+then 
+	code
+else
+	code
+fi
+
+
+if [ ]
+then 
+	code
+elif
+then 
+	code
+else 
+
+fi
+
+
+
+esta es la sintaxis de if
+-eq		equal
+-ne		non equal
+-gt		greater than
+-lt		less than
+
+tambien se pueden usar simbolos convencionales pero es necesario
+cambiar los [] del if por (()) por ejemplo
+(( $count > 9 ))
+
+[ $age -gt 18 ] && [ $age -lt 40 ]
+
+tambien es posible poner "$age" y el resultado no cambia
+
+[[ "$age" -gt 18  && "$age" -lt 40 ]]
+podemos cambiar && por -a
+
+esta es otra manera de hacerlo
+
+para el operador or ocupamos -o o tambien || pero cuando ocupamos || es necessario poner 
+[[]]
+
+Loops
+
+
+
+
+
+

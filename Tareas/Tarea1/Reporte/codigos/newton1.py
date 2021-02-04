@@ -1,13 +1,11 @@
-#
 # El método de Newton
-# Fraga
-# 25.01.2021
+# Ciro Fabian Bermudez Marquez
+# 02.02.2021
+# Librerias
 import math
 import sys
 
-# Se necesitan las funciones para
-# f(x), la primera derivada df(x),
-# y la segunda derivada ddf(x)
+# Funciones para el método
 def f(x) :
 	return x*x*x - math.cos(x)
 
@@ -24,16 +22,15 @@ a = float( sys.argv[1] )
 
 # 20 iteraciones máximas
 i = 1
+print("i \txi \t\tea")	
 while i <= 20 :
 	Deltax = -f(a)/df(a)
-
 	a += Deltax
-
-	print( i, a , Deltax)
+	print("%1d \t%3.5f \t%3.5f" %(i,a,Deltax))	
 
 	if abs(Deltax) < 1e-10 :
 		break
 
 	i += 1
 
-print( "f(x)=", f(a) )
+print( "x = ", a ,"f(x) = ", f(a) )
