@@ -9,13 +9,15 @@
 \usepackage{lmodern}
 \graphicspath{{imagenes/}}	
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\author{Sistemas evolutivos\\INAOE\\Ciro Fabian Bermudez Marquez}
+\author{Sistemas evolutivos\\INAOE\\Ciro Fabian Bermudez Marquez\\cirofabian.bermudez@gmail.com\\\url{https://github.com/cirofabianbermudez/sistemas_evolutivos/tree/main/Tareas/Tarea1}}
 \title{Tarea 1: Aplicación del método de Newton y heurísticas}
 %% Paquetes extra
 \usepackage{multicol}
 \usepackage[shortlabels]{enumitem}
 \usepackage{tcolorbox}
 \decimalpoint
+\usepackage{hyperref}
+\urlstyle{same}
 \input{librerias}
 \begin{document}
 
@@ -57,9 +59,9 @@ f''(x) = 2 - (1.5 \pi)^{2} \sin(1.5 \pi)
 \caption{Grafica de la derivada de la función a analizar.}
 \label{fig:g2}
 \end{figure}
-después generamos una solución aleatoria\footnote{La solución aleatoria puede ser entera o flotante, para este ejercicio utilizamos flotante.} (ver Código \ref{cod:random}) de $[0,7]$ que sirva como entrada para el algoritmo de Newton. Para repetir esto 100 veces utilizamos el script en bash que se muestra en el Código \ref{cod:repeat}, el cual escribe un archivo de texto \textbf{datosfloat.txt} que contiene los puntos $x$ donde existe un máximo o un mínimo, sin embargo bajo ciertas entradas el método falló o la solución se encuentra fuera de los rangos deseados, y debido a esto es necesario comprobar cuales fueron las soluciones correctas, esto se hace simplemente ingresando los valores del archivo de texto a la derivada de la función y comprobando que sea menor a cierto umbral, en este caso basta con que sea menos a $1 \times 10^{-4}$, sin embargo optamos por contar el número de ocurrencias de todos los elementos del array para tener más información.
+después generamos una solución aleatoria\footnote{La solución aleatoria puede ser entera o flotante, para este ejercicio utilizamos flotante.} (ver Código \ref{cod:random}) de $[0,7]$ que sirva como entrada para el algoritmo de Newton. Para repetir esto 100 veces utilizamos el script en bash que se muestra en el Código \ref{cod:repeat}, el cual escribe un archivo de texto \textbf{datosfloat.txt} que contiene los puntos $x$ donde existe un máximo o un mínimo, sin embargo bajo ciertas entradas el método falló o la solución se encuentra fuera de los rangos deseados, y debido a esto es necesario comprobar cuales fueron las soluciones correctas, esto se hace simplemente ingresando los valores del archivo de texto a la derivada de la función y comprobando que sea menor a cierto umbral, en este caso basta con que sea menor a $1 \times 10^{-4}$, sin embargo optamos por contar el número de ocurrencias de todos los elementos del array para tener más información.
 
-Para procesar los datos utilizamos el Código \ref{cod:analisis}, el cual comprueba que la solución sea valida, después que no sea negativa, calculamos el número de ocurrencias de cada solución y comprobamos si es un máximo o un mínimo 
+Para procesar los datos utilizamos el Código \ref{cod:analisis}, el cual comprueba que la solución sea valida, después que no sea negativa, calculamos el número de ocurrencias de cada solución y comprobamos si es un máximo o un mínimo .
 
 Del Código \ref{cod:analisis} obtenemos los siguientes resultados:
 
@@ -86,7 +88,9 @@ Del Código \ref{cod:analisis} obtenemos los siguientes resultados:
 
 De los resultados se puede notar que el \textbf{mínimo global} ocurre en $x = 3.652887442162$ y que este ocurre 18 veces, como se hizo 100 veces el experimento esto equivale a un $18\%$.
 
-Algunas notas importantes a tener en cuenta es que para poder ejecutar los archivos .sh hay que cambiar los permisos de ejecución con el comando \textbf{chmod +x filename.sh} y que con cambios muy pequeños a los códigos se 
+Algunas notas importantes a tener en cuenta es que para poder ejecutar los archivos .sh hay que cambiar los permisos de ejecución con el comando \textbf{chmod +x filename.sh} y que con cambios muy pequeños a los códigos se pueden hacer 1000 repeticiones y analizar los resultados fácilmente. 
+
+Finalmente podemos concluir que con los códigos que se muestran a continuación se encontraron los los 4 máximos y los 3 mínimos de la función $f(x)$ de los cuales solo uno fue el mínimo global. El método no es muy eficiente y se requieren muchas iteraciones para encontrar la solución correcta sin embargo su complejidad es poca y es en lo que cabe sencillo de implementar.
 
 
 \newpage
