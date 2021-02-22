@@ -1,0 +1,34 @@
+6.09.2019
+
+For a variable with
+2^b values, with b bits used in its representation,
+for a real variable used by the genetic algorithm:
+
+One choose b
+
+min   v     max        Used values by variables v
+ 0    x    2^b-1       b bits variable x
+
+The lineal relation between the two variables can
+be expressed as:
+
+ v - min         x - 0
+---------- =  -----------        (1)
+max - min     2^b - 1 - 0
+
+The value of variables v is equal to:
+
+       x
+v = ------- (max - min) + min    (2)
+    2^b - 1
+
+Defining delta as:
+
+           1
+delta = ------- (max - min)      (3)
+        2^b - 1
+
+which has a fixed value.  The value of v
+can be calculated as:
+
+v = x * delta + min              (4)

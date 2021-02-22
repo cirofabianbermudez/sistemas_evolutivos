@@ -1,0 +1,176 @@
+03.02.2021
+
+Heurísticas
+
+- Se deben usar si el problema tiene tres o más variables
+
+- El algoritmo genético (AG)
+- La evolución diferencial (ED)
+
+Tarea 2. Fecha de entrega 10.02.2021:
+  Aplicar el AG y la ED al
+  mismo problema que la tarea anterior pero con 10 variables
+
+  f1(x) = 0.1 * sum [ (x_i - 2)(x_i - 5) + sen( 1.5 pi x_i ) ]
+
+  para i = { 1, 2,..., 10 }
+
+  para la tarea usen pc = 0.7, pm = 0.1
+  Tamaño de la población 200 individuos ( 2*10*10 )
+  Número de generaciones (?)
+     50, 100, 150 
+  
+
+Algoritmo Genético
+
+  Individuo - es un vector que codifica las variables del problema.
+  Población - una matriz, un conjunto de vectores.
+
+  Función de aptitud es el valor de la función del problema a resolver. 
+
+  Las variables para el AG se codifican en cadenas binarias, de 0 o 1
+
+  No se usan bits directamente porque la variable de menor tamaño
+que se puede manipular en una computadora es de 8 bits (char en C).
+
+  Naturalmente el AG codifica problemas combinarios, no continuos.
+
+  Para cambia una cadena binaria a una variable real, se puede mapear
+linealmente:
+
+   x  - min_x         b 
+ -------------- = --------- 
+  max_x - min_x    2^p - 1
+
+ con p bits para cada variable x
+
+ Con tres bits
+
+  000  0          ->  min
+  001
+  010
+  011
+  100
+  101
+  110
+  111  2^3-1 = 7  ->  max
+
+  precisión = (max-min)/2^p
+
+  Para la tarea, usarán 10 bits
+  El espacio de búsqueda x_i = [0,7], para i={ 1,2, ..., 10}
+  La precisión es igual a 7/2^10 = 7*2^{-10} = 7/1024 = 0.0068359
+
+  Con una variable real (double en C) epsilon = 2.2 * 10^{-16}
+
+
+  Otro problema en la representació binaria: 
+
+  000  0  ->  min_xi
+  001  1
+  010  2
+  011  3
+  100  4
+  101  5
+  110  6
+  111  7  ->  max_xi
+
+  el problema está aquí, por ejemplo de 3 a 4 sus cadenas binarias
+  cambian todos sus valores, de 011 a 100.
+
+  Existe una codificación donde cambia un solo bit y se le llaman códigos Grey:
+
+  Binario -> Grey 
+  000  0  000
+  001  1  001
+  010  2  011    Grey->Binario   010 = 5
+  011  3  010
+  100  4  110
+  101  5  111
+  110  6  101
+  111  7  100
+
+  a  b | a xor b
+ ------------
+  0  0    0
+  0  1    1
+  1  0    1
+  1  1    0
+
+  El algoritmo genético realiza:
+
+  1. Se inicializa aleatoriamente la población
+  2. Se evalua la población
+  3. Para un número de generaciones:
+
+     para (tamaño de la población) :
+        3.1 Se seleccionan dos individos
+        3.2 Se cruzan
+        3.3 Su mutan
+         -  Se evaluan los hijos
+        3.4 Se aplican elitismo
+
+     La población de hijos sustituye a la de padres
+
+  4. Se reporta el mejor individuo
+ 
+  La selección, la cruza, la mutación y el elitimos con
+ operadores genéticos. 
+
+ 3.1 Torneo binario
+     i1 = Se escogen dos individuos y gana el mejor 
+     i2 = Se escogen dos individuos y gana el mejor 
+
+   Al inicio de cada iteración se revuelven aleatoriamente
+   la población (se barajean los índices ). Y se van tomando de
+   dos en dos.
+
+ 3.2  Cruza de dos puntos
+
+  Los padres:
+
+       v     v
+    0 0 1 1 0 0 1 1
+    0 1 0 1 0 1 0 1
+
+  Los hijos:
+
+    0 0 0 1 0 0 1 1
+    0 1 1 1 0 1 0 1
+
+  Se usa un probabilidad de cruza en [0,1]
+
+  3.3 Mutación
+
+    Se escoge aleatoriamente una posición de la cadena y
+   se invierte el bit.
+
+   Se aplica con un "probabilidad de mutación" que toma valores 
+   en [0,1]
+
+   rand( ) entrega una variable aleatoria con distribución uniforme
+   en [0,1)
+
+   x = rand(), este 0 <= x < 1
+
+   if rand() < cm :
+     se aplica la mutación
+
+  Si el probabilidad de cruza y mutación son iguales a 1, el
+  algoritmos está haciendo una búsqueda aleatoria.
+
+  El probabilidad de mutación debe ser un valor bajor, menor que 0.2
+
+  3.4 El elitismo
+
+    Hay que guardar la mejor solución para garantizar convergencia
+
+    El mejor individuo se mantiene en la población
+
+El precio de usar una heurística es que la función del problema
+se tiene que ejecutar el número de generaciones multiplicada por el
+número de invididuos.
+
+Para el ejemplo visto en clase 30 generaciones, 20 individuos
+  600 evaluaciones de la función
+  Sin usar derivadas 

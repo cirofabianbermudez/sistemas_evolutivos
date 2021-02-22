@@ -1,0 +1,60 @@
+10.02.2021
+
+Heurísticas que se suguiere usar:
+  * Versiones autoadaptables
+
+  LSHADE  (C)   El máximo número de evaluciones
+      de la función y 18*n el tamaño de la población 
+  MOL     (Python) Número de generaciones y el tamaño de la población
+  APSO    (Python) Número de generaciones y el tamaño de la población
+
+Para problemas de una sola función (monoobjetivo)
+
+Y se necesita el tamaño del espacio de búsqueda
+
+Un problema de optimización de describe en forma
+general como:
+
+   minimizar f(x),
+   x \in R^n, n variables del problema
+   sujeto a :
+   g(x) >= 0, restricciones de desigualdad, y
+   h(x) = 0, restricciones de igualdad.
+
+   x \in S, S \subset R^n.
+   tenemos las restricciones de caja que es un subconjunto de S
+
+
+Cualquier problema en la vida real tiene restricciones.
+
+Definir el problema a optimizar es la mitad del problema.
+La otra mitad del problema es resolverlo.
+
+Dos métodos para incorporar las restricciones al problema:
+  1. El métode de penalización. El más sencillo porque reemplaza
+    la función f(x) a optimizar como:
+
+     f1(x) = f(x) + a sum min[0, g_i(x)] + b sum h_j^2(x) 
+
+   para i \in [1,2, ..., I] para I restricciones de desigualdad, y
+   para j \in [1,2, ..., J] para J restricciones de igualdad.
+
+  El algoritmo primero encuentra soluciones factibles, que cumplen
+las restricciones y luego las optimiza.
+
+
+   2. Modificar el paso de selección de la heurística
+     Se puede pero no nada obvio ni directo como modificar la heurística.
+
+Un ejemplo:
+Problema:
+  minimizar: f(x) = (x − 2)(x − 5) + sin(1.5πx)
+   sujeto a : y − 5 − 2.5(x − 6) >= 0
+
+  La restricción indica la zona arriba de la línea y − 5 − 2.5(x − 6) = 0
+
+
+ Si estamos comparando los resultados de dos 
+algoritmo, ¿cuál es el mejor? 
+
+

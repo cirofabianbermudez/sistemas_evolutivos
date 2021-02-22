@@ -1,0 +1,96 @@
+17.02.2021
+
+Ordenar la población en frentes de Pareto
+- Obtener el frente de Pareto de una población
+
+P2 = nil
+do{
+ 1. Obtener el frente de Pareto de una población 1
+ 2. P2 <- P2 + Borramo los individuos en (1) de la población 
+} while( haya individuos en P1 );
+
+
+Tarea 4. Optimización multiobjetivo
+  Fecha de entrega: 24 de febrero, 2021.
+  Resolver el problema de Osykzka and Kundu  (OSY en el fuente de NSGA-II)
+  Este es un problema de 6 variables, 2 objetivos y 6 restricciones
+
+  Resolver el problema de Tanaka:
+  Minimizar f1(x1) = x1, y
+            f2(x2) = x2, 
+   sujeto a:
+       g1(x1,x2) >= x1^2 + x2^2 - 1 - 0.1 cos( 16 arctan(x2/x1))
+       g2(x1,x2) >= 0.5 - (x1 - 0.5)^2 - (x1-0.5)^2
+
+   el espacio de búsqueda es:
+    [10^{-6}, pi] para x1 y x2
+
+  
+Dominancia según NSGA-II
+  Archivo dominance.c 
+
+  Se tienen dos soluciones x1, x2, y sus evaluacines f1, f2
+ y el valor de la restricciones. Para NSGA-II las restricciones
+ se cumplen si g_j >= 0
+
+ En el archivo eval.c :
+
+  Si el problema tiene restricciones ( ncon!=0 ) :
+
+  ind->constr_violation = 0.0;
+  for (j=0; j<ncon; j++) {       /** Para todas las restricciones **/
+      if (ind->constr[j]<0.0) {  /** Si no se cumple la restricción j **/
+          ind->constr_violation += ind->constr[j];  /** Se suma su valor **/
+      }
+  }
+
+  Si constr_violation es igual a 0, la solución es factible,
+  o dicho de otra forma, cumple todas las restrucciones
+
+  Si constr_violation < 0, no cumple alguna restricción
+
+  Primero lo que busca NGSA-II es soluciones factibles
+  (dominance.c). Cuando se selecciona:
+     
+    Si los dos individuos son no factibles:
+      Regresa el que viole menos restricciones
+    Si alguno de los individuos es factible:
+      Escoge el individo que es factible
+    Si los dos indiduos son factibles
+      Escoge el que domina
+
+   NSGA-II no va a optimizar hasta que encuentre soluciones
+ factibles.
+
+  Como se checa la dominancia
+  Tenemos una prueba dominancia( a, b ) que
+  regresa 1 si 'a' domina a 'b'
+  regresa -1 si 'b' domina a 'a'
+  regresa 0 si son no nominados
+
+  1 2 3 4 5 6
+1 - 0 0 0 0 0
+2   - 0 0 0 0
+3     - 0 0 0
+4       - 0 0
+5         - 0
+6           -
+      
+Si este es el resultado de la prueba, todos los individuos son
+nodominados 
+
+  1 2 3 4 5 6
+1 - 0 0 1 0 0
+2   - 0 0 1 0
+3     - 0 0 0
+4       - 0 0
+5         - 0
+6           -
+                 1 2 3 4 5 6
+   Un arreglo d=[0 0 0 1 1 0]
+
+  Y los individuos 1 2 3 6 forman el frente de Pareto
+
+  Yo me imagino usar esta función cuando se quiere obtener
+la población no dominada de varias ejecuciones.
+

@@ -1,0 +1,99 @@
+08.02.2021
+
+La evolución diferencial
+
+Usa números reales es un representación
+
+Necesita los valores de los siguientes parámetros:
+ - Tamaño de la población
+ - Número de generaciones
+ - Valor del constante de recombinación (R)
+ - Valor del constante de diferencias (F)
+ - Valor del umbral s
+
+Para un problema de n variables,
+Tamaño de la población = 10*n
+Número de generación, 30, 50, 100, 150,...
+R,F = [0,1], si son iguales a 1 se está usando una búsqueda aleatoria
+s está definido en el espacio de la función,
+  si se tiene un umbral u,
+  significa 0.1u en las variables 
+
+ Si se tiene esta precisión
+  1e-5 en la función, equivale a 
+  1e-6 en las variables
+
+Tarea 3. Es mismo problema que resolvieron con el AG, pero
+  ahora usando la ED. También usaran LSHADE (DE autoadaptativo).
+
+  Es un problema de 10 variables, necesitan una población de 100 individuos
+  ¿Cuántas generaciones?
+  C = 0.8
+  R = 0.6
+  Intervalo de búsqueda para cada variable es de [0,7]
+
+Al inicio de cualquier heurística lo que quiere es que explore
+el problema (donde está la zona donde se encuentra la solución del problema).
+
+Una vez que se encuentra una zona promisoria, lo que quiere
+es que se explote.
+
+En general, una heurística puede explorar bien, pero tardar mucho
+en la explotación
+
+exploración <-> explotación
+
+El gran problema de sintonizar R y F
+9 valores para R 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+9 valores para F 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+9x9 = 81 pruebas
+
+100? 500? veces
+
+81 * 500 = 40,500 ejecuciones 
+
+5 valores para R 0.2 0.4 0.6 0.8 0.9
+5 valores para F 0.2 0.4 0.6 0.8 0.9
+25 pruebas
+
+25*500 = 12,500 ejecuciones
+9x9 = 81 pruebas
+
+Mi sugerencia de trabajo:
+  - Usar Matlab para tener un código en el que confien.
+    Entrada, salida y está resolviendo correctamente el problema.
+
+  - Usen C, codifique el problema en C.
+
+  - Ejecutan la heurísica en C (o C++).
+
+
+¿Cómo comparar varias heurísticas?
+
+ AG
+ ED
+ LSHADE
+ PSO (cúmulo de partículas, particle swarn optimization)
+ MOL (versión simplificada de PSO)
+
+ Todas la heurísticas resolver un problema de optimización
+ en una complejidad lineal
+ t
+ 2.1 t
+ 2.0 t
+
+ El método de Newton lo resuelve cuadráticamente
+
+ Para comparar heurísticas deberían de realizar el mismo 
+ trabajo, debería de realizar el mismo número de evaluaciones
+ de la función objetivo.
+
+ AG 100 individuos, 200 generaciones
+ ED 120 individuos, 100 generaciones
+  ESTO ESTÁ MAL!!!!
+
+ AG 100 individuos, 100 generaciones
+ ED 100 individuos, 100 generaciones
+  ESTO ESTÁ BIEN!
+
+

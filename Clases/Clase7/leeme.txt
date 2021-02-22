@@ -1,0 +1,11 @@
+15.02.2021
+
+Para comparar los resultados de dos
+algoritmos.
+
+Generamos los datos:
+
+python datos.py 45 10 > a.txt
+python datos.py 50 10 > b.txt
+
+python pruebaW.py

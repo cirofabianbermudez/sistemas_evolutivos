@@ -1,0 +1,21 @@
+6.09.2019
+
+2^b valores para b bits en la representación
+para las variables reales para un algoritmo genético.
+
+Se escoge b
+
+min   v     max 
+ 0    x    2^b-1
+
+ v - min         x - 0
+---------- =  -----------
+max - min     2^b - 1 - 0
+
+       x
+v = ------- (max - min) + min
+    2^b - 1
+
+           1
+delta = ------- (max - min)
+        2^b - 1
