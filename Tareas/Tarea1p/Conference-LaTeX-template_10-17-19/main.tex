@@ -1,0 +1,155 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\decimalpoint
+\renewcommand{\labelitemi}{$\bullet$}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+    
+    
+ \input{librerias}
+\begin{document}
+
+\title{Tarea 1. Método de Newton para encontrar Máximos y Mínimos \\
+%%{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and should not be used}
+}
+
+\author{\IEEEauthorblockN{ Ciro Fabian Bermudez Marquez}
+INAOE\\
+Mexico, Puebla \\
+\url{cirofabian.bermudez@gmail.com}
+}
+
+\maketitle
+
+\begin{abstract}
+Utilizando el método de Newton se encuentran los máximos y mínimos de la función $f(x)$, posteriormente utilizando una heurística se encontró el mínimo global.
+\end{abstract}
+
+
+\section{Descripción del problema}
+
+Se tiene la función de la ecuación (\ref{ec:f}) en el rango $[0,7]$, y se desea encontrar los máximos y mínimos utilizando el método de Newton.
+
+\begin{equation}
+f(x) = (x-2)(x-5) + \sin(1.5 \pi x)
+\label{ec:f}
+\end{equation} 
+su gráfica se muestra en la Figura \ref{fig:f}.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=5cm]{example-image} 
+\caption{Gráfica de la función.}
+\label{fig:f}
+\end{figure}
+
+\section{Método de Newton}
+
+El método de Newton se deduce de la serie de Taylor la cual se muestra en la ecuación (\ref{ec:taylor}) y tomando los primeros dos términos obtenemos la ecuación (\ref{ec:taylor2}).
+
+\begin{equation}
+f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)} (a)}{n !} (x -a)^{n}
+\label{ec:taylor}
+\end{equation}
+
+\begin{equation}
+f(x) = f(a) + f'(a) (x-a)
+\label{ec:taylor2}
+\end{equation}
+si consideramos $x-a$ infinitesimal y encontrando las raíces de $f(x)$ obtenemos la ecuación (\ref{ec:alg1}) (Newton V1).
+
+\begin{equation}
+dx = - \frac{f(a)}{f'(a)}
+\label{ec:alg1}
+\end{equation}
+
+Si hacemos este mismo procedimiento pero considerando $f'(x)$ para la serie de Taylor encontramos la ecuación del método de Newton para encontrar máximos y mínimos como se muestra en la ecuación (\ref{ec:alg2}) (Newton V2).
+
+\begin{equation}
+dx = - \frac{f'(a)}{f''(a)}
+\label{ec:alg2}
+\end{equation}
+El método necesita un punto inicial $a_{0}$ para comenzar el proceso iterativo, $a_{i+1} = a_{i} + dx$ y la condición de paro son 20 iteraciones máximas o $|dx| < \epsilon$ donde $\epsilon =  1e^{-3}$.
+
+\section{Utilización del método de Newton V2}
+
+Para utilizar este método es necesario conocer hasta la segunda derivada de la función, las cuales se muestran en (\ref{ec:fp}) y (\ref{ec:fpp}) y en en la Figura \ref{fig:fp} se muestra la derivada de la función.
+
+\begin{equation}
+f'(x) = 2x -7 + 1.5 \pi \cos(1.5 \pi x)
+\label{ec:fp}
+\end{equation}
+
+\begin{equation}
+f''(x) = 2 -(1.5)^{2} \sin(1.5 \pi x)
+\label{ec:fpp}
+\end{equation}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=5cm]{example-image} 
+\caption{Gráfica de la derivada función.}
+\label{fig:fp}
+\end{figure}
+
+Observando cuidadosamente la gráfica de la Figura \ref{fig:fp} resalta a la vista que la función es multimodal, esto significa que presenta más de un punto máximo y mínimo. La función presenta 3 mínimos locales, 3 máximos locales y un mínimo global. 
+
+El método de Newton necesita un punto inicial para comenzar el proceso iterativo de encontrar una solución y debido a que es multimodal a menos que se elija un punto muy cercano el mínimo global el método va a converger a alguna otra solución.
+
+\section{Resultados}
+
+\subsection{Prueba del método de Newton V2}
+Eligiendo un valor inicial $a_{0}$ cercano a los máximo y mínimos obtenemos los resultados de la Tabla \ref{tab:res1}.
+
+	\begin{table}[h!]   
+	\caption{Máximos y mínimos encontrados con el método de Newton V2.}                                                                                                                
+		\centering                                       
+		\begin{tabular}{cccccc}
+			\hline                                             
+			$a_{0}$ & $x$ & $y$ & $|dx|$ & Iteraciones & Max o Min\\                     
+			\hline 
+			1.2 & -3.216 & -3.216 & -3.216 & -3.216 & Min\\                                            
+			1.4 & -3.216 & -3.216 & -3.216 & -3.216 & Max\\                                            
+			2.4 & -3.216 & -3.216 & -3.216 & -3.216 & Min\\                                            
+			2.9 & -3.216 & -3.216 & -3.216 & -3.216 & Max\\                                            
+			3.6 & -3.216 & -3.216 & -3.216 & -3.216 &\textbf{Min Global}\\                                            
+			4.4 & -3.216 & -3.216 & -3.216 & -3.216 & Max\\                                            
+			4.8 & -3.216 & -3.216 & -3.216 & -3.216 & Min\\                                            
+			\hline                                             
+		\end{tabular}
+		\label{tab:res1}
+	\end{table}	
+
+\subsection{Heurística para encontrar mínimo global}
+La heurístaica para encontrar el mínimo global consiste en generar un punto inicial $a_{0}$ aleatorio en el rango $[0,7]$, ejecutar el método de Newton V2 y comprobar si la solución encontrada es el mínimo global utilizando el siguiente criterio:
+
+\begin{equation}
+	|x - \text{Min}_{\text{global}}| < 1e-4
+\end{equation}
+esto se repite 100 veces considerando que el mínimo global se encuentra en $x = 3.6528$.
+
+De las 100 repeticiones la heuristica solo encontró el mínimo global 
+
+
+
+
+\section{Conclusiones}
+
+
+
+\begin{thebibliography}{00}
+\bibitem{b1}  Dr. Luis Gerardo de la Fraga. ``Apuntes de clase'' .
+\end{thebibliography}
+
+
+\end{document}
