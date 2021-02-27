@@ -108,6 +108,6 @@ class APSO:
 
 		i = 0
 		while i <= v :
-			print( self.mejor[i], end=' ' )
+		#	print( self.mejor[i], end=' ' )
 			i += 1
-		print( )
+		print( self.mejor[10])

@@ -15,15 +15,14 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
     
-    
- \input{librerias}
+\input{librerias}
 \begin{document}
 
-\title{Algoritmo genético aplicado a función de 10 variables\\
+\title{Tarea 2. Algoritmo genético \\
 %%{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and should not be used}
 }
 
-\author{\IEEEauthorblockN{ Ciro Fabian Bermudez Marquez}
+\author{\IEEEauthorblockN{Ciro Fabián Bermúdez Márquez}
 INAOE\\
 Mexico, Puebla \\
 \url{cirofabian.bermudez@gmail.com}
@@ -32,26 +31,23 @@ Mexico, Puebla \\
 \maketitle
 
 \begin{abstract}
-En este trabajo se pone a prueba el algoritmo genético (AG) para  un problema de minimización de una función de 10 variables implementado en python.
+En este trabajo se pone a prueba el algoritmo genético (AG) para  un problema de minimización de una función de 10 variables.
 \end{abstract}
 
-\begin{IEEEkeywords}
-AG, python, heuristica.
-\end{IEEEkeywords}
 
-\section{Introducción}
+\section{Descripción del problema}
 
-Los métodos de búsqueda heurística consisten en añadir información, basándose en el espacio estudiado hasta ese momento para hacer una búsqueda inteligente. Para problemas no lineales y multimodales se justifica usar heurísticas.
-
-Las heurísticas se deben usar si el problema tiene tres o más variables y en este trabajo se estudiará el algoritmo genético (AG) aplicado a una función de 10 variables.
+Utilizando el algoritmo genético (AG) resolver el problema de minimizar la función de 10 variables $f(\mathbf{x})$ que se muestra en la ecuación \ref{ec:fx} teniendo en cuenta los siguientes criterios:
 
 \begin{equation}
- f_{1}(x) = 0.1 \sum_{i=1} ^{10} (x_{i} -2)(x_{i} -5) + \sin(1.5 \pi x_{i})
+ f(\mathbf{x}) = 0.1 \sum_{i=1} ^{10} (x_{i} -2)(x_{i} -5) + \sin(1.5 \pi x_{i})
+ \label{ec:fx}
  \end{equation} 
- teniendo en cuenta las siguientes características para el algoritmo $p_{c} = 0.7$, $p_{m} = 0.1$, $\mu =200 $, $g=50, 100, 150$, codificación de 10 bits, espacio de búsqueda $x_{i}  = [0,7]$ para todas las $i = \{1, 2, \ldots,10\}$ .
-
+$p_{c} = 0.7$, $p_{m} = 0.1$, $\mu =200 $, $g=50, 100, 150$, codificación de 10 bits, espacio de búsqueda $x_{i}$ en el rango $[0,7]$ para todas las $i = \{1, 2, \ldots,10\}$, donde $\mathbf{x} = \left[ x_{1}, x_{2}, \cdots, x_{10} \right]^{T}$.
 
 \section{El algoritmo genético}
+
+Los métodos de búsqueda heurística consisten en añadir información, basándose en el espacio estudiado hasta ese momento para hacer una búsqueda inteligente. Para problemas no lineales y multimodales se justifica usar heurísticas de mismo modo para problemas que tiene tres o más variables.
 
 Para entender el algoritmo genético es necesario conocer la terminología que se utiliza.
  
@@ -59,7 +55,7 @@ Para entender el algoritmo genético es necesario conocer la terminología que s
 
 \textbf{Población:} una matriz, un conjunto de vectores.
 
-Las variables para el AG se codifican en cadenas binarias, de 0 o 1. El AG codifica problemas combinarlos, no continuos.
+Las variables para el AG se codifican en cadenas binarias, de 0 o 1. Para la representación binaria se utiliza la codificación Grey, ya que esta solo cambia un bit entre cada valor. El AG codifica problemas combinarlos, no continuos.
 
 Para cambia una cadena binaria a una variable real, se puede mapear linealmente:
 \begin{equation}
@@ -72,8 +68,6 @@ donde  la precisión es igual a
 \end{equation} 
 y $p$ es el número de bits.
 
-Para la representación binaria se utiliza la codificación Grey, ya que esta solo cambia un bit entre cada valor.
-
 A grandes rasgos la filosofía del algoritmo genético se puede resumir en los siguientes pasos: 
 \begin{itemize}
 \item Utiliza un conjunto de soluciones (se le llama población).
@@ -82,9 +76,6 @@ A grandes rasgos la filosofía del algoritmo genético se puede resumir en los s
 \item Usa los operadores de selección, cruza, mutación y elitismo.
 \item La población guarda la \textit{inteligencia} del algoritmo.
 \end{itemize}
-
-
-
 
 El algoritmo requiere las siguientes variables para su funcionamiento:
 \begin{itemize}
@@ -97,7 +88,7 @@ El algoritmo requiere las siguientes variables para su funcionamiento:
 
 
 
-El AG realiza las siguientes operaciones:
+En orden el AG realiza las siguientes operaciones:
 \begin{enumerate}
 \item Se inicializa aleatoriamente la población
 \item Se evaluá la población
@@ -145,34 +136,38 @@ número de individuos.
 
 
 \section{Resultados}
+Utilizando los parámetros descritos en la sección  descripción del problema  y modificando el archivo \textbf{evalua.py} de la siguiente manera:
 
-Lo primero que hay que hacer es cambiar la función objetivo del archivo \textbf{evalua.py} de la siguiente manera:
+\lstinputlisting[style = PYTHON, caption =  Función de 10 variables., label = cod:random]{newton3.py}
+se realizaron 100 pruebas para cada uno de los números de generaciones, el mínimo global de la función se encuentra en $x_{i} = 3.652887442162$ para toda $i$, y  $f(\mathbf{x}) = -3.224518019$, para saber si el algoritmo encontró el valor de la función objetivo se utiliza el siguiente criterio:
 
+\begin{equation}
+| f_{\text{algoritmo}} - f_{\text{objetivo}}| < 1e-4
+\end{equation}
 
-\lstinputlisting[style = PYTHON, caption =  Generar número aleatorio flotante., label = cod:random]{newton3.py}
-
-Y haciendo las modificaciones al archivo \textbf{corre.py} con las especificaciones del problema se obtuvo lo siguiente:
-
+Los resultados se muestran en la Tabla  \ref{tab:res}.
 \begin{table}[!hbp]   
-	\caption{Puntos donde hay un máximo o mínimo.}                                                                                                                
+	\caption{Resultados de AG para encontrar el mínimo global de la función repetido 100 veces.}                                                                                                                
 		\centering                                       
 		\begin{tabular}{cc}
 			\hline                                             
-			\#{} Generaciones & Mínimo \\                     
+			\#{} Generaciones & Eficiencia \% \\                     
 			\hline 
-			50 & -3.21680104689738\\                                            
-			100 & -3.224391005143813\\
-			150 & -3.224504148622877\\
+			50 & 0\\                                            
+			60 & 0\\
+			70 & 4\\
+			80 & 22\\
+			100 & 85\\
+			150 & 97\\
+			200 & 99\\
 			\hline                                             
 		\end{tabular}
+		\label{tab:res}
 	\end{table}	
-	
-	Sabemos que el mínimo esta en con $x = 3.652887442162$ $f_{1}(x)= $ -3.224518019 y con 150 generaciones ya nos aproximamos bastante al resultado real.
-
 
 \section{Conclusiones}
 
-El algoritmo encuentra un resultado aceptado cuando utilizamos 150 generaciones, y tiene la ventaja de no necesitar las derivadas de la función objetivo en contraposición con el método de Newton, sin embargo este  tiene la desventaja de tener que elegir correctamente los parámetros del algoritmo y que dependiendo de ellos podemos tener mejores o peores resultados, con un poco de práctica y con experiencia utilizando este tipo de algoritmos su utilidad se ve inmediatamente al notar que para resolver un problema de 10 variables encuentra una solución relativamente rápido.
+Cuando se tienen arriba de 100 generaciones el porcentaje de acierto es mayor al 85 porciento y para generaciones arriba de 150 la diferencia es mínima. A diferencia del método de Newton para encontrar máximos y mínimos que tenia una eficiencia del 9\% para el el caso de una variable, aplicado a este problema tendría una eficiencia de $(0.1)(0.09^{10})$ lo cual es 3.4$e-10$ \%, lo que demuestra la utilidad de utilizar este tipo de heurísticas.
 
 \begin{thebibliography}{00}
 \bibitem{b1}  Dr. Luis Gerardo de la Fraga. ``Apuntes de clase'' .

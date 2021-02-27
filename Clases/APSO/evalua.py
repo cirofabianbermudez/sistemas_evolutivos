@@ -33,7 +33,7 @@ def Evalua2( _n, vpar ) :
 
 # Un problema con una restricción
 # resulto por el método de penalización
-def Evalua( _n, vpar ) :
+def Evalua3( _n, vpar ) :
 
 	x = vpar[0]
 	y = (x - 2.0)*(x - 5.0) + math.sin(1.5*math.pi*x)
@@ -49,3 +49,13 @@ def Evalua( _n, vpar ) :
 		v = 0.0
 
 	return y + 20.0*v*v
+
+
+def Evalua( _n, vpar ) :
+	suma = 0
+	for i in range(_n):
+		suma = suma +  (vpar[i]-2)*(vpar[i]-5) + math.sin( 1.5*math.pi*vpar[i])
+	
+	v = 0.1*suma
+
+	return v

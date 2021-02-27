@@ -1,0 +1,180 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\decimalpoint
+\renewcommand{\labelitemi}{$\bullet$}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+    
+    
+ \input{librerias}
+\begin{document}
+
+\title{Tarea 4: Optimización multiobjetivo Osykzka and Kundu
+}
+
+\author{\IEEEauthorblockN{ Ciro Fabian Bermudez Marquez}
+INAOE\\
+Mexico, Puebla \\
+\url{cirofabian.bermudez@gmail.com}
+}
+
+\maketitle
+
+\begin{abstract}
+En este trabajo se pone a prueba el algoritmo de evolución diferencial (ED), LSHADE y APSO para minimizar una función de 10 variables. 
+\end{abstract}
+
+\begin{IEEEkeywords}
+ED, python, heuristica.
+\end{IEEEkeywords}
+
+\section{Descripción del problema}
+
+Utilizando los algoritmos de evolución diferencial (ED), LSHADE y APSO resolver el problema de minimizar la función de 10 variables $f(\mathbf{x})$ que se muestra en la ecuación (\ref{ec:fx}).
+
+\begin{equation}
+ f(\mathbf{x}) = 0.1 \sum_{i=1} ^{10} (x_{i} -2)(x_{i} -5) + \sin(1.5 \pi x_{i})
+ \label{ec:fx}
+\end{equation} 
+donde $\mathbf{x} = \left[ x_{1}, x_{2}, \cdots, x_{10} \right]^{T}$.
+
+
+\section{Evolución Diferencial (ED)}
+
+La evolución diferencial usa números reales en su presentación de las variables, en general realiza un mejor trabajo que el algoritmo genético y se pude usar una condición automática de paro. 
+Las heurísticas se deben usar si el problema tiene tres o más variables o si se trata de problemas multimodales.
+
+El algoritmo requiere las siguientes variables para su funcionamiento:
+\begin{itemize}
+\item Tamaño de población $\mu$
+\item Numero de generaciones $g$
+\item Valor del constante de recombinación $R$
+\item Valor del constante de diferencias $F$
+\item Valor del umbral $s$.
+\end{itemize}
+
+Para un problema de $n$ variables el tamaño de población debe ser igual a $10n$. Es importante resaltar que si $R, F$ las cuales se encuentran en el rango de $[0,1]$ son iguales a 1 se está usando una búsqueda aleatoria. El parámetro $s$ está definido en el espacio de la función. Si se tiene un umbral $u$ significa 0.1$u$ en las variables. Si se tiene una precisión $1 \times 10^{-5}$, equivale a $1 \times 10^{-6}$ en las variables.
+
+Las especificaciones a tener en cuenta para esta heurística son $F = 0.2$, $R = 0.4$, $\mu = 100$, $g=30, 50, 100, 150$, espacio de búsqueda $x_{i} $ en el rango $ [0,7]$ para todas las $i = \{1, 2, \ldots,10\}$.
+
+Se repitió 100 veces esta heurística variando el número de generaciones y se ingreso la función objetivo al archivo \textbf{evalua.py} de la siguiente manera:
+
+\lstinputlisting[style = PYTHON, caption =  Función objetivo., label = cod:random]{newton3.py}
+
+El mínimo global de la función se encuentra en $x_{i} = 3.652887442162$ para toda $i$, y  $f(\mathbf{x}) = -3.224518019$, para determinar si el algoritmo encontró el valor de la función objetivo se utiliza el siguiente criterio:
+
+
+\begin{equation}
+|f_\text{algoritmo} - f_\text{objetivo} | < 1e-4
+\end{equation}
+
+
+En la Tabla \ref{tab:ED} se muestran los resultados de aplicar la heurística de  ED.
+
+\begin{table}[!hbp]   
+	\caption{Resultados de algoritmo ED en 100 repeticiones.}                                                                                                                
+		\centering                                       
+		\begin{tabular}{cc}
+			\hline                                             
+			\#{} Generaciones & Eficiencia \% \\                     
+			\hline 
+			50 & 0\\                                            
+			60 & 0\\
+			70 & 14\\
+			80 & 95\\
+			90 & 100\\
+			100 & 100\\
+			150 & 100\\
+			\hline                                             
+		\end{tabular}
+		\label{tab:ED}
+	\end{table}	
+
+
+
+\section{LSHADE}
+
+El algoritmo LSHADE es un algoritmo autoajustable y que unicamente requiere de los siguientes parámetros:
+
+\begin{itemize}
+\item Número de variables del problema
+\item Número máximo de evaluaciones 
+\item La semilla
+\item Tamaño de población
+\end{itemize}
+
+Se modifico la función objetivo de la siguiente manera: 
+
+\lstinputlisting[style = CC, caption =  Función objetivo para LSHADE., label = cod:dd]{evaluate.cc}
+
+
+El número máximo de evaluaciones recomendado para el algoritmo es igual a 2000 veces el número de variables del problema y el tamaño de población igual a 18 veces el número de variables del problema, sin embargo para poner a prueba el algoritmo se buscó el mínimo valor para el cual presenta resultados aceptables, utilizando el mismo criterio para determinar si el algoritmo encontró el valor de la función objetivo en la Tabla \ref{tab:LSHADE} se muestran los resultados.
+
+\begin{table}[h!]   
+	\caption{Resultados de algoritmo LSHADE en 100 repeticiones.}                                                                                                                
+		\centering                                       
+		\begin{tabular}{cc}
+			\hline                                             
+			\#{} Max Evaluaciones & Eficiencia \% \\                     
+			\hline 
+			4500 & 0\\                                            
+			4600 & 0\\
+			4800 & 100\\
+			5000 & 100\\
+			5200 & 100\\
+			\hline                                             
+		\end{tabular}
+		\label{tab:LSHADE}
+	\end{table}	
+
+\section{APSO}
+
+Para este algoritmo es necesario ingresar los siguientes parámetros
+\begin{itemize}
+\item Tamaño de población
+\item El número de generaciones
+\item El número de variables
+\item Parámetros de control $\alpha = 1$ y $\beta = 0.5$
+\end{itemize}
+
+Para poder comparar este algoritmo con la evolución diferencial se eligió un tamaño de población de 100 individuos y variar el número de generaciones  entre 50 y 200. De mismo modo esto se repetio 100 veces y se utilizó el mismo criterio  para determinar si el algoritmo encontró el valor de la función objetivo, los resultados se muestran en la Tabla \ref{tab:APSO}.
+
+
+\begin{table}[h!]   
+	\caption{Resultados de algoritmo APSO en 100 repeticiones y población de 100 individuos.}                                                                                                                
+		\centering                                       
+		\begin{tabular}{cc}
+			\hline                                             
+			\#{} Generaciones & Eficiencia \% \\                     
+			\hline 
+			50 & 0\\                                            
+			100 & 0\\
+			150 & 0\\
+			200 & 0\\
+			\hline                                             
+		\end{tabular}
+		\label{tab:APSO}
+	\end{table}	
+
+Si aumentamos el tamaño de población a 1000 y variamos el número de generaciones tampoco se encontró ninguna solución factible.
+
+\section{Conclusiones}
+
+Hay que resaltar que tanto el algoritmo de ED como el APSO se probaron con una codificación en python y debido a esto el tiempo para ejecutar las 100 repeticiones fue mucho más largo que el algoritmo LSHADE el cual estuvo codificado en C++. De esta observación se puede recomendar que para probar algoritmos es muy buena idea hacerlo en python debido a la facilidad de codificación y lo rápido de desarrollar plataformas de testeo sin embargo una vez comprobado el funcionamiento correcto del algoritmo es sumamente recomendado pasar el algoritmo a C/C++ debido a la rapidez en el tiempo de ejecución. De los tres algoritmos tanto el LSHADE como la ED fueron buenos en encontrar la solución a nuestro problema sin embargo, LSHADE tiene la ventaja de tanto ejecutarse más rápido como requerir menos parámetros debido a su característica de ser autoajustable por lo que fue el mejor de los tres. En cuanto APSO este algoritmo presento diversas peculiaridades, para una población de 100 individuos y variando el número de generaciones no encontró ninguna solución, de mismo modo cambiando la población a 1000 individuos, esto podría deberse a los parámetros de control los cuales no se modificaron se sus valores por defecto. 
+
+\begin{thebibliography}{00}
+\bibitem{b1}  Dr. Luis Gerardo de la Fraga. ``Apuntes de clase'' .
+\end{thebibliography}
+
+
+\end{document}

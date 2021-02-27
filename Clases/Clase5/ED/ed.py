@@ -121,6 +121,8 @@ class ED:
 
 		i = 0
 		while i <= v :
-			print( self.Pop[k][i], end=' ' )
+		#	print( self.Pop[k][i], end=' ' )
 			i += 1
 		# print self.Pop[k]
+		
+		print( self.Pop[1][10])

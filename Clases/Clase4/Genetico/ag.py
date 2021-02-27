@@ -275,13 +275,13 @@ class AG:
 	BuscaMejor = BuscaMejor1
 
 	def ImprimeMejor( self ) :
-		print( str(self.vmejor), end=' ' )
+	#	print( str(self.vmejor), end=' ' )
 
 		j = 0
 		while j < self._nv :
 			b = Grey2Dec( self.vmejor, self.vindicesvar[j], self.vtam[j], self.vw )
 			self.vv[j] = b*(self.vmax[j] - self.vmin[j])/self.p2[j] + self.vmin[j] 
-			print( b, end=' ' )
+	#		print( b, end=' ' )
 			j += 1
 		print( self._mejor )
 

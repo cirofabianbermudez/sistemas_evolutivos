@@ -10,7 +10,7 @@ Datos = ed.ED()
 # Número de variables
 # Constante de diferencias
 # Constante de recombinacion
-Datos.PoneParametros( 100, 1000, 10, 0.8, 0.6 )
+Datos.PoneParametros( 100, 70, 10, 0.2, 0.4 )
 # Datos.PoneLimites( [0.0, 0.0, 0.0, 0.0], [1.0, 1.0, 1.0, 1.0] )
 Datos.PoneLimites( [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0] )
 

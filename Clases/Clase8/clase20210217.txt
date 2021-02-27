@@ -25,6 +25,8 @@ Tarea 4. Optimización multiobjetivo
    el espacio de búsqueda es:
     [10^{-6}, pi] para x1 y x2
 
+  ejecútenlo 3 veces con distinas semillas aleatorias.
+  Reporten el conjunto de Pareto de los tres ejecuciones.
   
 Dominancia según NSGA-II
   Archivo dominance.c 

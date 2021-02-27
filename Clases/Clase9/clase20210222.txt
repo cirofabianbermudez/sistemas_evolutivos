@@ -1,0 +1,72 @@
+22.02.2021
+
+p1 tienes una eficiencia del 0.09
+
+p2 = 0.1 * sum_{i=1}^10 p1
+
+¿Cuál es la eficiencia del método de Newton para resolver
+el problema 2?
+ Sería (0.09)(0.09) .... (0.09) = 0.09^10 
+
+ = 0.000 000 000 03486784401 
+ = 3.49 x 10^{-11}
+
+
+Problemas multiobjetivo
+
+- NSGA-II 
+   Non-dominated Search Genetic Algorithm
+
+- Vimos un algoritmo para obtener las soluciones no dominadas
+  Tenemos que hacer n(n-1)/2 pruebas dominancia(ai,aj)
+  a es algún individuo,
+  i en [1,n],
+  i < j < n  
+ 
+  Hacer este trabajo de ordenar los individuos según la
+  dominancia de Pareto, es el trabajo más pesado que tiene
+  que hacer el NSGA-II
+
+Calcular la distancia de apiñamiento no es problema, porque
+hay que ordenar las población según cada valor de las
+funciones objetivo y esto es un costo (n log n), que resulta
+eficiente, que resulta
+
+grafica de complejidad.gnu 
+
+Generalmente se usa una población de 100, o tal vez 200, pero
+no más.
+
+El NSGA-II usa:
+eta_c: distribution index for real variable SBX crossover
+eta_m: distribution index for real variable polynomial mutation
+
+Usa el operador SBX para cruza y también para la mutación.
+Vimos como se hacer la cruza y la mutación con variables binarias.
+Deb analizó como hacer estas operaciones genéticas con variables
+reales. Al resultado le llama SBX (Simulated Binary Crossover)
+
+          ((eta+1)/2 )* beta^eta, para beta \in [0,1]
+SBX(x) = 
+          ((eta+1)/2 )* (1/(beta^{eta+2}))
+
+Valores de eta grandes, los valores de los hijos están centrados
+  alderedor de los valores de los padres 
+
+Para eta=0, los hijos tienen una probabilidad uniforme de 0.5 entre
+los valores de los padres.
+
+Entonces, si tienen un problema muy difícil, se debería usar valores
+de eta más pequeños
+
+Valores de los parámetros que podría usarse en NGSA-II:
+  p_c = 0.9
+  p_m = 1/n, donde n es el número de variables
+
+  Si el problema es difícil: eta_c = 5, eta_m = 5
+  Para otros problemas: eta_c = 15, eta_m = 20
+
+Se podría intentar (de hecho se algo estándar que han intentado muchos
+autores) usar los operadores de la ED para crear los hijos en NSGA-II.
+
+

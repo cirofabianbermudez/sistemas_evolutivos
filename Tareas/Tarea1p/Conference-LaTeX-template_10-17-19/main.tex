@@ -48,7 +48,7 @@ su gráfica se muestra en la Figura \ref{fig:f}.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=5cm]{example-image} 
+\includegraphics[width=8cm]{grafica1.eps} 
 \caption{Gráfica de la función.}
 \label{fig:f}
 \end{figure}
@@ -79,7 +79,7 @@ Si hacemos este mismo procedimiento pero considerando $f'(x)$ para la serie de T
 dx = - \frac{f'(a)}{f''(a)}
 \label{ec:alg2}
 \end{equation}
-El método necesita un punto inicial $a_{0}$ para comenzar el proceso iterativo, $a_{i+1} = a_{i} + dx$ y la condición de paro son 20 iteraciones máximas o $|dx| < \epsilon$ donde $\epsilon =  1e^{-3}$.
+El método necesita un punto inicial $a_{0}$ para comenzar el proceso iterativo, $a_{i+1} = a_{i} + dx$ y la condición de paro son 20 iteraciones máximas o $|dx| < \epsilon$ donde $\epsilon =  1e^{-10}$.
 
 \section{Utilización del método de Newton V2}
 
@@ -97,7 +97,7 @@ f''(x) = 2 -(1.5)^{2} \sin(1.5 \pi x)
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=5cm]{example-image} 
+\includegraphics[width=8cm]{grafica2.eps} 
 \caption{Gráfica de la derivada función.}
 \label{fig:fp}
 \end{figure}
@@ -114,17 +114,17 @@ Eligiendo un valor inicial $a_{0}$ cercano a los máximo y mínimos obtenemos lo
 	\begin{table}[h!]   
 	\caption{Máximos y mínimos encontrados con el método de Newton V2.}                                                                                                                
 		\centering                                       
-		\begin{tabular}{cccccc}
+		\begin{tabular}{ccccc}
 			\hline                                             
-			$a_{0}$ & $x$ & $y$ & $|dx|$ & Iteraciones & Max o Min\\                     
+			$a_{0}$ & $x$  & $|dx|$ & Iteraciones & Max o Min\\                     
 			\hline 
-			1.2 & -3.216 & -3.216 & -3.216 & -3.216 & Min\\                                            
-			1.4 & -3.216 & -3.216 & -3.216 & -3.216 & Max\\                                            
-			2.4 & -3.216 & -3.216 & -3.216 & -3.216 & Min\\                                            
-			2.9 & -3.216 & -3.216 & -3.216 & -3.216 & Max\\                                            
-			3.6 & -3.216 & -3.216 & -3.216 & -3.216 &\textbf{Min Global}\\                                            
-			4.4 & -3.216 & -3.216 & -3.216 & -3.216 & Max\\                                            
-			4.8 & -3.216 & -3.216 & -3.216 & -3.216 & Min\\                                            
+			1.2 & 1.26419808  & 5.53050375e-11 & 5 & Min\\                                            
+			1.4 & 1.44108574  & 1.00957580e-16  & 16 & Max\\                                            
+			2.4 & 2.43305587  & 7.74529240e-13 & 4 & Min\\                                            
+			2.9 & 2.95000435  & 1.39272369e-11 & 4 & Max\\                                            
+			3.6 & 3.65288744  & 1.02705621e-14 & 4 &\textbf{Min Global}\\                                            
+			4.4 & 4.41828865  & 1.19983916e-14 & 4 & Max\\                                            
+			4.8 & 4.86849168  & 5.48555533e-15 & 5 & Min\\                                            
 			\hline                                             
 		\end{tabular}
 		\label{tab:res1}
@@ -136,14 +136,13 @@ La heurístaica para encontrar el mínimo global consiste en generar un punto in
 \begin{equation}
 	|x - \text{Min}_{\text{global}}| < 1e-4
 \end{equation}
-esto se repite 100 veces considerando que el mínimo global se encuentra en $x = 3.6528$.
+esto se repite 100 veces considerando que el mínimo global se encuentra en $x = 3.65288744$ y $f(x) = -3.22451801$.
 
-De las 100 repeticiones la heuristica solo encontró el mínimo global 
-
-
-
+De las 100 repeticiones la heuristica solo encontró el mínimo global 9 veces, esto equivale a una eficiencia del 9\%.
 
 \section{Conclusiones}
+
+De la aplicación de esta heurística podemos decir que el método de Newton no es muy eficiente cuando se trata de problemas multimodales, y si se desea utilizar este método para problemas de más de una variable la eficiencia podemos esperar una eficiencia aun peor.
 
 
 

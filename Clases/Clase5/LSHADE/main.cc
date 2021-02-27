@@ -23,7 +23,7 @@ int main( int argc, char *argv[] )
 
 	//available number of fitness evaluations 
 	// g_max_num_evaluations = g_problem_size * 2000;
-	g_max_num_evaluations = 10000;
+	g_max_num_evaluations = 4800;
 
 	//random seed is selected based on time according to competition rules
 	// srand((unsigned)time(NULL));

@@ -23,7 +23,7 @@ a = float( sys.argv[1] )
 # 50 iteraciones maximas
 i = 1
 #print("i \txi \t\tea")	
-while i <= 50 :
+while i <= 20 :
 	Deltax = -df(a)/ddf(a)
 	a += Deltax
 	#print("%1d \t%3.5f \t%3.5f" %(i,a,Deltax))	

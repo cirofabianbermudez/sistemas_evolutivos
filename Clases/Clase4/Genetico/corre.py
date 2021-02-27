@@ -17,7 +17,7 @@ Datos = ag.AG()
 # 3 número de variables
 # 4 probalidad de cruza
 # 5 probalidad de mutacion
-Datos.PoneParametros( 200, 150, 10, 0.7, 0.1  ) 
+Datos.PoneParametros( 200, 200, 10, 0.7, 0.1  ) 
 
 # Args: una lista con el tamaño en bits para cada variable
 Datos.PoneTamanios( [10,10,10,10,10,10,10,10,10,10] ) 

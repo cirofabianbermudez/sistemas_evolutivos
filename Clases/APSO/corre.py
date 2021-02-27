@@ -8,9 +8,9 @@ Datos = apso.APSO()
 # Tamaño de poblacion
 # Generaciones
 # Número de variables
-Datos.PoneParametros( 20, 60, 1 )
+Datos.PoneParametros( 1000, 100, 10 )
 # Datos.PoneLimites( [0.0, 0.0, 0.0, 0.0], [1.0, 1.0, 1.0, 1.0] )
-Datos.PoneLimites( [0.0], [7.0] )
+Datos.PoneLimites( [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [7.0, 7.0 , 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0] )
 
 Datos.Inicializa( ) 
 Datos.EvaluaPoblacion( ) 
@@ -22,7 +22,7 @@ while i<Datos._gen :
 	Datos.EvaluaPoblacion( ) 
 	Datos.EncuentraMejor( )
 	i += 1
-	if i%10 == 0 :
-		Datos.ImprimeMejor()
+	#if i%10 == 0 :
+		#Datos.ImprimeMejor()
 
 Datos.ImprimeMejor()

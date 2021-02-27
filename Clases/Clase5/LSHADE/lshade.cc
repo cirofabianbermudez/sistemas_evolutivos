@@ -250,7 +250,7 @@ Fitness LSHADE::run() {
   }
 
   // return bsf_fitness - optimum;
-  for (int j = 0; j < problem_size; j ++) cout << bsf_solution[j] << ' ';
+  // for (int j = 0; j < problem_size; j ++) cout << bsf_solution[j] << ' ';
   return bsf_fitness;
 }
 
