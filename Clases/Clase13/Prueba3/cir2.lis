@@ -1,0 +1,38 @@
+
+Circuit: amplificador cascode con entrada complementaria
+
+Warning: Model issue on line 5 :
+  .model n_18_mm nmos ( level=49 version=3.1 tnom=27 tox=4.1e-9 xj=1e-7 nc ...
+unrecognized parameter (xl) - ignored
+unrecognized parameter (xw) - ignored
+Warning: Model issue on line 7 :
+  .model p_18_mm pmos ( level=49 version=3.1 tnom=27 tox=4.1e-9 xj=1e-7 nc ...
+unrecognized parameter (xl) - ignored
+unrecognized parameter (xw) - ignored
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+
+No. of Data Rows : 161
+ao                  =  9.475300e+01
+aodb = 3.953186e+01
+bw                  =  4.291075e+04
+gbw                 =  3.959497e+06
+fase                =  1.423241e+00
+faseok = 2.615457e+02
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run

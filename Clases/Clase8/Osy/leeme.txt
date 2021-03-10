@@ -1,0 +1,15 @@
+# 17.02.2021
+
+# Se ejecutó NSGA-II como:
+
+../../Nsga2-v1.1/nsga2r 0.123 < sch1.in 
+
+# 0.123 es la semilla
+# sch1.in es un archivo con todos los parámetros que usa NSGA-II
+# para este problema
+
+# En el archivo de salida best_pop.out los resultados son:
+
+# funcion obj 1   función obj 2        x          restricción   rango d. apiñamiento
+# 4.000447e+00    1.247825e-08    2.000112e+00    0.000000e+00    1   1.000000e+14
+# 8.617158e-07    3.996288e+00    9.282865e-04    0.000000e+00    1   1.000000e+14

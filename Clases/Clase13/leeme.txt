@@ -1,0 +1,12 @@
+08.03.2021
+
+Prueba1/
+  Directorio donde se probaron los circuitos
+ de medición para ngspice
+
+Prueba2/
+  Directorio donde se probó el programa checaCircuito
+
+Prueba3/
+  Directorio donde se probó NSGA-II
+

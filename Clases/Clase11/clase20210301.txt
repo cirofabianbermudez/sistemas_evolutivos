@@ -1,0 +1,51 @@
+01.03.2021
+
+MOEAD
+MOMBI2
+
+Están codificados en el EMO Project
+de Raquel Hernández
+
+https://computacion.cs.cinvestav.mx/~rhernandez/
+
+Vienen muchos algoritmos y funciones de prueba.
+
+Si tienen un problema nuevo que quieren resolver,
+tienen que codificarlo en el archivo
+demo/emo_moea.c
+
+y reimplementar la función:
+
+void myMOP_eval(EMO_MOP *mop, double *f, double *x);
+
+para problemas sin restricciones. O reimplementar la
+función 
+
+void myMOP_eval(EMO_MOP *mop, double *f, double *g, double *x);
+
+para problemas con restricciones.
+
+Para resolver un problema:
+1. Crear un directorio, fuera del árbol de directorios del código fuente
+2. Crear los subdirectorios "input" y "output"
+3. Copiar el archivo de configuración, de semillas para los
+   números aleatorios y los pesos (MOEAD y MOMBI2 necesitan el
+   conjunto de pesos)
+4. Ejecutar el problema 
+
+
+https://pymoo.org,
+    para resolver problemas multiobjetivo en python.
+    Este paquete provee varios algoritmos evolutivos y una guía de uso
+    para resolver los problemas que tengamos a mano.
+
+
+Tarea 5: (fecha de entrega 8 de marzo, 2021)
+ Resolver el problema de Tanaka con el proyecto EMO de Raquel Hernández
+usando MOEAD y MOMBI2. Correrlo tres veces y graficar los resultados.
+
+Clase 12: Mombi II e indicadores
+Clase 13: Optimizar un circuito. La última tarea
+Clase 14. Examen
+
+

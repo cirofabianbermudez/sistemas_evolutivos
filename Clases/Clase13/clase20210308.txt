@@ -1,0 +1,65 @@
+08.03.2021
+
+Optimización de circuitos
+
+El artículo publicado en el ISCAS 2018:  2018amplificador.pdf
+
+1. El circuito viene de algún artículo
+
+2. Hay que hacer el archivo para ngspice
+   a) Un primer circuito es para medir el punto de operación
+   b) Otro circuito es para medir la ganacia y el ancho de banda
+
+   Hay que checar que los circuitos funcionan
+
+   ngspice -b -o cir1.los cir1.sp
+
+3. Hay que hacer un programa en C para dados las entradas
+   de los transistores, me da los valores de:
+
+   - genancia
+   - ancho de banda
+   - valores de las restricciones
+
+   Progs/
+
+4. Hay que probar que el programa "checaCircuito" está funcionando
+   (lo probé en el directorio Prueba2/)
+   Es necesario tener los archivos de los circuitos y de la
+   biblioteca de la especificación de la tecnología.
+
+5. Hay que evaluar un individuo para nsga2
+
+   which ngspice 
+   para saber donde está instalado ngspice
+
+   En el código se puede insertar los valors de individuos,
+   buscar "mano" en el fuente nsga2r.c
+
+   Hacer el archivo de entrada para nsga2 con todos los parámetros
+   (input.txt)
+
+   Ejecutar nsga2
+
+   mkdir Prueba3
+   cd Prueba3
+   # hice ligas a los circuitos y la biblioteca de los transistores
+   ../nsgaIIsinBug/nsga2r 0.123 < input.txt > /dev/null
+
+   hice un programa en python Progs/cambiaInt.py para
+   pasar las restricciones y los valores de los anchos de los
+   transistores a valores enteros.
+  
+La última tarea
+
+100 individuos 
+Generaciones 100,150,200
+
+Maritza :   etas: 10, 10
+Johnatan :         5,  5
+Ciro:             20, 20
+Daniel:           10   5
+
+Una misma semilla: 0.1234
+
+Reporten los tres frentes hallados.

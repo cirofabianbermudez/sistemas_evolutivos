@@ -1,0 +1,2 @@
+python simplexl.py 2 10 > o2.txt
+python simplexl.py 3 13 > o3.txt

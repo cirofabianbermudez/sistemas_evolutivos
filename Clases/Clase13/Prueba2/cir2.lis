@@ -1,0 +1,68 @@
+
+Circuit: amplificador cascode con entrada complementaria
+
+Warning: Model issue on line 5 :
+  .model n_18_mm nmos ( level=49 version=3.1 tnom=27 tox=4.1e-9 xj=1e-7 nc ...
+unrecognized parameter (xl) - ignored
+unrecognized parameter (xw) - ignored
+Warning: Model issue on line 7 :
+  .model p_18_mm pmos ( level=49 version=3.1 tnom=27 tox=4.1e-9 xj=1e-7 nc ...
+unrecognized parameter (xl) - ignored
+unrecognized parameter (xw) - ignored
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Note: Starting true gmin stepping
+Trying gmin =   1.0000E-03 Warning: Further gmin increment
+Trying gmin =   5.6234E-03 Warning: Further gmin increment
+Trying gmin =   8.6596E-03 Warning: Further gmin increment
+Trying gmin =   9.6466E-03 Warning: Further gmin increment
+Trying gmin =   9.9105E-03 Warning: Further gmin increment
+Trying gmin =   9.9775E-03 Warning: Further gmin increment
+Trying gmin =   9.9944E-03 Warning: Further gmin increment
+Trying gmin =   9.9986E-03 Warning: Further gmin increment
+Trying gmin =   9.9996E-03 Warning: Last gmin step failed
+Warning: True gmin stepping failed
+Note: Starting dynamic gmin stepping
+Trying gmin =   1.0000E-03 Note: One successful gmin step
+Trying gmin =   1.0000E-04 Note: One successful gmin step
+Trying gmin =   1.0000E-05 Note: One successful gmin step
+Trying gmin =   1.0000E-06 Warning: Further gmin increment
+Trying gmin =   5.6234E-06 Warning: Further gmin increment
+Trying gmin =   8.6596E-06 Note: One successful gmin step
+Trying gmin =   6.9783E-06 Note: One successful gmin step
+Trying gmin =   5.0481E-06 Note: One successful gmin step
+Trying gmin =   3.1059E-06 Note: One successful gmin step
+Trying gmin =   1.4989E-06 Note: One successful gmin step
+Trying gmin =   5.0254E-07 Note: One successful gmin step
+Trying gmin =   9.7557E-08 Note: One successful gmin step
+Trying gmin =   9.7557E-09 Note: One successful gmin step
+Trying gmin =   9.7557E-10 Note: One successful gmin step
+Trying gmin =   9.7557E-11 Note: One successful gmin step
+Trying gmin =   9.7557E-12 Note: One successful gmin step
+Trying gmin =   1.0000E-12 Note: One successful gmin step
+Note: Dynamic gmin stepping completed
+
+No. of Data Rows : 161
+ao                  =  5.960363e+02
+aodb = 5.550545e+01
+bw                  =  7.864865e+03
+gbw                 =  4.603418e+06
+fase                =  1.528346e+00
+faseok = 2.675678e+02
+Note: No ".plot", ".print", or ".fourier" lines; no simulations run

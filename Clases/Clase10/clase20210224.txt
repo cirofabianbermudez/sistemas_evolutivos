@@ -1,0 +1,126 @@
+24.02.2021
+
+Multi-Objective Evolutionary Algorithm based on Decomposition
+(MOEA-D)
+
+Tenemos que resolver un problema multiobjetivo
+y la manera es que lo resuelve MOEA-D es resolviendo
+varios problemas monoobjetivo.
+
+Se puede cambir un problema multiobjetivo a uno
+monoobjetivo. Se pueden usar varias formas:
+
+(1) Suma pesada:
+
+   vf = [f1, f2, ..., fm], para m funciones objetivo
+   V = {vl1, vl2, ..., vlp}, para p problemas a resolver,
+   V es un conjunto de vectores de pesos,
+   vli = [li1, li2, ..., lim] es el vector i de pesos,
+   Para cada vecto de pesos, sus elementos deben cumplir:
+      suma lij = 1, y cada
+      lij > 0,
+   para un vecto i y elemento j en el vector.
+   (l de lambda)
+
+  El problema a resolver es ahora:
+
+  minimizar f(vf, {vli}, vx) = suma (vli * fi) 
+  vx \in S \subset R^n (para n variables)
+
+  Y se deberían resolver los p problemas.
+
+  Un conjunto de pesos vli encuentra una solución al problema.
+  Cambiando los pesos encontramos otra solución al problema, y así
+  sucesivamente para poder recontruir el frente de Pareto. 
+
+(2) Usando funciones de utilidad:
+
+ Con las mismas definiciones usadas en el punto (1), el
+problema ahora a resolver:
+
+  minimizar f_tch(vf, {vli}, vx) = max{ lij | fj - zj |) }
+  vx \in S \subset R^n (para n variables)
+  donde vz es un vector de referencia, 
+  vz = [z1, z2, ..., zm], para m funciones objetivo
+
+  esto es usando la función de utilidad de Tchebychef
+
+Pero MOEAD resuelve todos los p problemas (que dependen del
+número de vectores de pesos dentro del conjunto V) al mismo
+tiempo, concurrentemente.
+
+Problemas:
+A. ¿Cómo calcular los vectores de pesos?
+B. ¿Qué funciones de utilidad usar? 
+   La función de utilidad de Tchebychef es solo una de las posibles
+   a usar.
+
+Si estamos resolviendo un problema de minimización,
+el punto de referencia para la función de Tchebychef
+es el valor mínimo para cada función objetivo.
+
+Muchos artículos han demostrado que MOEAD se desempeña mejor
+que NSGAII, en problemas con 2 y 3 objetivos.
+
+El MOEAD original usa función de Tchebychef.
+
+Problema A. Algoritmo Diseño Malla Simplex 
+
+m es el número de objetivos
+h es el parámetro de proporción
+
+Existen n+1 valores de proporción igualmente espaciados desde 0 a 1 
+como:
+
+[0  1  3  4  5       h ]
+[-, -, -, -, -, ..., - ]
+[h  h  h  h  h       h ]
+
+y se tienen que escoger los conjuntos de pesos de forma
+que sumen 1.
+
+ n       n!
+C  = ---------, el número de combinaciones de k elementos en un conjunto
+ k   (n-k)! k!   de n elementos 
+
+a, b, c , tenemos tres elementos
+                            3!      3 2!
+C^3_2 = 3!/((3-2)! 2!)) = ------ = ------ = 3
+                          1! 2!     1 2!
+
+1 a,b
+2 b,c
+3 a,c
+
+El número de vectores de pesos para la malla simplex es:
+  C^(h+m-1)_{m-1}
+
+Para un problema de dos objetivos y h = 4
+El vectos de valores de proporción
+[0, 1/4, 2/4, 3/4, 1]
+Y tenemos que escoger de dos en dos elementos que sumen 1:
+1. 0, 1
+2. 1/4, 3/4
+3. 2/4, 2/4
+4. 3/4, 1/4
+5. 1, 0
+
+C^5_1 = 5!/(4! 1!) = 5
+
+----------------
+Se debe recordar:
+----------------
+Los valores de los pesos son lineales y éstos se multiplican
+por los valores de las funciones objetivos en la función
+de utilidad de Tchebichef. Por lo tanto, la escala de los
+valores de las funciones objetivo debe ser lineal.
+
+NSGAII: ganancia (u.a.) vs ancho de banda (Hz)
+MOEAD: ganancia (u.a.) vs log(ancho de banda) (log Hz)
+
+Código:
+  simplexl.py
+
+El código del libro:
+  https://delta.cs.cinvestav.mx/~fraga/OptCode.tar.gz
+

@@ -6,10 +6,9 @@ double evaluate( double *vx, int n )
 	//double x = vx[0];
 	double y = 0.0;
 	for (int i = 0; i <= 9; i++) {
-		y = y + (vx[i]-2.0)*(vx[i]-5.0) + sin(1.5*PI*vx[i]);
+		y += (vx[i]-2.0)*(vx[i]-5.0) + sin(1.5*PI*vx[i]);
       }
 	
-	y = 0.1*y;
-
+	y *= 0.1;
 	return( y );
 }
